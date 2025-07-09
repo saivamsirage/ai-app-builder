@@ -19,7 +19,7 @@ async def generate(request: Request):
     data = await request.json()
     prompt = data.get("prompt", "")
     try:
-        response = openai.ChatCompletion.create(
+        response = openai.client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": prompt}]
         )
