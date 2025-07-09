@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Prompt to App</title>
+</head>
+<body>
+  <h1>Prompt to App</h1>
+  <input type="text" id="prompt" placeholder="Describe your app..." />
+  <button onclick="generate()">Generate</button>
+  <pre id="output"></pre>
+
+  <script>
+    async function generate() {
+      const prompt = document.getElementById('prompt').value;
+      const res = await fetch('http://localhost:8000/api/generate', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ prompt })
+      });
+      const data = await res.json();
+      document.getElementById('output').innerText = JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>
