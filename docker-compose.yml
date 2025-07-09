@@ -6,7 +6,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - OPENAI_API_KEY=your-api-key-here
+      - OPENAI_API_KEY=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
   frontend:
     image: nginx:alpine
     volumes:
